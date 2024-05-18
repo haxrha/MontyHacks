@@ -47,8 +47,52 @@
     </div>
   </div>
   <div class="content-container">
-    <!-- Write your code here -->
+      <div class="content-container">
+    <input id="searchInput" type="text" placeholder="Search for food banks...">
+  <button onClick="search()">Search</button>
+  <div id="searchResults"></div>
   </div>
+  <script>
+    
+    var foodBanks = [
+      "Peterborough",
+      "Chepstow",
+      "Wisbech",
+      "Brent" , 
+      "North Norfolk" ,
+      "Walton & Hersham" , 
+      "Market Drayton" , 
+      "Gloucester" , 
+      "Eastbourne" , 
+      "Black Country" , 
+      "Malmesbury & District" ,
+      "South & East Bristol" , 
+      "Basingstoke" ,
+      "Haverhill" ,
+      "Woking" , 
+      "Bradford on Avon" ,
+      "Aylesbury" ,
+      "Salford" ,
+      "Norwood & Brixton" ,
+      "Southampton Basics Bank"
+    ];
+  
+    function search() {
+      var input = document.getElementById("searchInput").value.toLowerCase();
+      var results = foodBanks.filter(function(bank) {
+        return bank.toLowerCase().includes(input);
+      });
+  
+      var resultsContainer = document.getElementById("searchResults");
+      resultsContainer.innerHTML = "";
+      results.forEach(function(result) {
+        var div = document.createElement("div");
+        div.textContent = result;
+        resultsContainer.appendChild(div);
+      });
+    }
+  </script>
+  
 </body>
 
 </html>
