@@ -10,17 +10,16 @@ users = {}
 needs = {}
 # json_data = json.load(users)
 
+@app.route('/<path:path>')
+def static_serve(path):
+  print(path)
+  if "." not in path.split("/")[-1]:
+    path += ".html"
+  return send_from_directory('frontend', path)
 
-# @app.route('/<path:path>')
-# def static_serve(path):
-#   print(path)
-#   if "." not in path.split("/")[-1]:
-#     path += ".html"
-#   return send_from_directory('frontend', path)
 
-
-@app.route('/home.html')
-def home(path):
+@app.route('/')
+def home():
   return send_file("frontend/home.html")
 
 
