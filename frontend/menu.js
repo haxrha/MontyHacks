@@ -5,3 +5,11 @@ function toggleMenu() {
 document
 	.getElementsByClassName("hamburger")[0]
 	.addEventListener("click", toggleMenu);
+
+document.getElementsByClassName("home")[0].addEventListener("click", () => {
+	window.location.href = "home";
+});
+
+document.getElementsByClassName("home")[0].addEventListener("click", () => {
+	window.location.href = "banks";
+});

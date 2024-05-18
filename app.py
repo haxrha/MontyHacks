@@ -10,6 +10,7 @@ users = {}
 needs = {}
 # json_data = json.load(users)
 
+
 @app.route('/<path:path>')
 def static_serve(path):
   print(path)
@@ -28,33 +29,32 @@ def success(name):
   return 'welcome %s' % name
 
 
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-  if request.method == 'POST':
-    user = request.form['nm']
-    users.append(user)
-    password = request.form['password']
-    return redirect(url_for('success', name=user))
-  else:
-    user = request.args.get('nm')
-    return redirect(url_for('success', name=user))
+# @app.route('/login', methods=['POST', 'GET'])
+# def login():
+#   if request.method == 'POST':
+#     user = request.form['name']
+#     users.append(user)
+#     password = request.form['password']
+#     return redirect(url_for('success', name=user))
+#   else:
+#     user = request.args.get('name')
+#     return redirect(url_for('success', name=user))
 
+# @app.route('/register', methods=['POST'])
+# def register():
+#   user_data = request.get_json()
+#   username = user_data.get('username')
+#   password = user_data.get('password')
 
-@app.route('/register', methods=['POST'])
-def register():
-  user_data = request.get_json()
-  username = user_data.get('username')
-  password = user_data.get('password')
+#   if username in users:
+#     return jsonify({'error': 'User already exists'}), 400
 
-  if username in users:
-    return jsonify({'error': 'User already exists'}), 400
+#   users[username] = {'password': password}
 
-  users[username] = {'password': password}
+#   with open('data.json', 'w') as f:
+#     json.dump(users, f)
 
-  with open('data.json', 'w') as f:
-    json.dump(users, f)
-
-  return jsonify({'message': 'User registered successfully'}), 201
+#   return jsonify({'message': 'User registered successfully'}), 201
 
 
 @app.route('/needs', methods=['POST', 'GET'])
@@ -65,7 +65,9 @@ def render_needs():
                 'parliamentary_contituency', 'mp', 'mp_party', 'ward', 'district', 'country', 'charity_number',
                 'charity_register_url', 'closed', 'latt_long', 'network')
   reader = csv.DictReader(csvfile, fieldnames)
-  out = json.dumps((row for row in reader))
+  print([row for row in reader])
+  # out = json.dumps()
+  # print(out)
 
 
 app.run()
