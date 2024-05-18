@@ -7,9 +7,6 @@ from flask import (Flask, flash, jsonify, redirect, render_template, request, se
 app = Flask(__name__)
 users = {}
 
-needs = {}
-# json_data = json.load(users)
-
 
 @app.route('/<path:path>')
 def static_serve(path):
@@ -57,17 +54,22 @@ def success(name):
 #   return jsonify({'message': 'User registered successfully'}), 201
 
 
-@app.route('/needs', methods=['POST', 'GET'])
-def render_needs():
-  csvfile = open('foodbanks.csv', 'r')
-  jsonfile = open('data.json', 'w')
-  fieldnames = ('name', 'slug', 'url', 'shopping_list_url', 'phone', 'email', 'address', 'postcode',
-                'parliamentary_contituency', 'mp', 'mp_party', 'ward', 'district', 'country', 'charity_number',
-                'charity_register_url', 'closed', 'latt_long', 'network')
-  reader = csv.DictReader(csvfile, fieldnames)
-  print([row for row in reader])
-  # out = json.dumps()
-  # print(out)
+def process_needs(needs):
+  data = []
+  for need in needs:
+    nf = {}
+    nf["id"] = need["id"]
+    nf["foodbank"] = {"name": need["foodbank"]["name"], "url": need["foodbank"]["urls"]["self"]}
+    nf["needs"] = need["needs"]
+    nf["excess"] = need["excess"]
+    data.append(nf)
+  return data
+
+
+@app.route('/needs.json')
+def send_needs():
+  needs = json.loads(open('needs.json', "r").read())
+  return jsonify(needs)
 
 
 app.run()

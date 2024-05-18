@@ -1,0 +1,59 @@
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-container > div {
+  width: 80%;
+  max-width: 400px;
+  height: 450px;
+  border: 5px solid black;
+  border-radius: 20px;
+  /* padding: 50px; */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-header {
+  background-image: url("produce.jpg");
+  background-size: cover;
+  background-position: center;
+  flex: 0 0 150px;
+}
+
+.login-content {
+  flex: 1 1 0;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.brand {
+  text-align: center;
+}
+
+.username,
+.password {
+  font-size: 18px;
+  outline: none;
+  padding: 7.5px 10px;
+  border-radius: 10px;
+  border: 3px solid black;
+}
+
+button {
+  padding: 10px;
+  font-size: 24px;
+  width: 100%;
+  max-width: 175px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  border: 5px solid black;
+  background-color: antiquewhite;
+  font-weight: 900;
+  cursor: pointer;
+}

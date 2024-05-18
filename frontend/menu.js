@@ -7,9 +7,12 @@ document
 	.addEventListener("click", toggleMenu);
 
 document.getElementsByClassName("home")[0].addEventListener("click", () => {
-	window.location.href = "home";
+	window.location.href = "home.html";
 });
 
-document.getElementsByClassName("home")[0].addEventListener("click", () => {
-	window.location.href = "banks";
+document.getElementsByClassName("banks")[0].addEventListener("click", () => {
+	window.location.href = "banks.html";
+});
+document.getElementsByClassName("login")[0].addEventListener("click", () => {
+	window.location.href = "login.html";
 });
