@@ -64,6 +64,18 @@
 }
 
 @media only screen and (max-width: 650px) {
+  .home-title {
+    font-size: 36px;
+    text-align: center;
+    margin: 0 50px;
+  }
+
+  .home-description {
+    font-size: 18px;
+    text-align: center;
+    margin: 0 50px;
+  }
+
   .home-description {
     width: 350px;
     margin: 0;
